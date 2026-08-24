@@ -3,13 +3,13 @@
 A Streamlit exploratory application based on the dissertation workflow.
 
 ## What it does
-1. Upload CSV/XLSX data.
-2. Detect the comment/text column.
-3. Run VADER sentiment analysis.
-4. Show sentiment, source, topic and time visualisations.
-5. If manual sentiment labels exist, calculate accuracy, precision, recall, F1 and a confusion matrix.
-6. Run LDA topic modelling and show topic distribution, top words and perplexity.
-7. Download analysed results.
+1. Loads the dissertation dataset automatically.
+2. Detects the comment/text column.
+3. Runs VADER sentiment analysis.
+4. Shows sentiment, source, topic and time visualisations.
+5. If manual sentiment labels exist, calculates accuracy, precision, recall, F1 and a confusion matrix.
+6. Runs LDA topic modelling and shows topic distribution, top words and perplexity.
+7. Allows analysed results to be downloaded.
 
 ## Required data
 A text column is required. The app recognises names such as:
