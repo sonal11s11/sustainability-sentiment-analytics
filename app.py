@@ -62,25 +62,20 @@ def top_words(model, vectorizer, n=10):
         rows.append({"Topic": f"Topic {i}", "Top words": ", ".join(words[idx])})
     return pd.DataFrame(rows)
 
-st.sidebar.header("Upload dataset")
-file = st.sidebar.file_uploader("CSV or Excel", type=["csv","xlsx"])
-
-if not file:
-    st.info("Upload your dataset from the sidebar to begin.")
-    st.markdown("""
-**Required:** a text column such as `Comment`, `Text`, `Review` or `Feedback`.
-
-**Optional:** `Sentiment`, `Source`, `Topic`, `Language`, `Date`.
-
-If a labelled Sentiment column exists, the app calculates accuracy, precision, recall,
-F1-score and a confusion matrix.
-""")
-    st.stop()
+DATA_FILE = "EcoForumFeedbackDataset.xlsx"
 
 try:
-    df = pd.read_csv(file) if file.name.lower().endswith(".csv") else pd.read_excel(file)
+    df = pd.read_excel(DATA_FILE)
 except Exception as e:
-    st.error(f"Could not read the file: {e}")
+    st.error(f"Could not read the dataset: {e}")
+    st.stop()
+
+DATA_FILE = "EcoForumFeedbackDataset.xlsx"
+
+try:
+    df = pd.read_excel(DATA_FILE)
+except Exception as e:
+    st.error(f"Could not read the dataset: {e}")
     st.stop()
 
 comment_col = find_col(df, ["comment","comments","text","review","feedback","content"])
@@ -235,4 +230,5 @@ st.download_button(
 )
 
 st.divider()
-st.caption("Exploratory prototype: automated outputs should support, not replace, professional judgement.")
+st.caption("Explore sustainability sentiment, model evaluation and LDA topics from the dissertation dataset.")
+ofessional judgement.")
